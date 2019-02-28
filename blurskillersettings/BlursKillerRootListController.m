@@ -11,7 +11,10 @@
 #import <UIKit/UIKit.h>
 #import "NactroHeaderView.h"
 
-#define HEADER_HEIGHT 160.0f
+static NSString *tweakName = @"透明板 v1.1.1";
+#define kWidth  [UIScreen mainScreen].bounds.size.width
+#define HEADER_HEIGHT 120.0f
+
 @interface BlursKillerRootListController()
 @property (nonatomic, strong)NactroHeaderView *headerView;
 @end
@@ -34,7 +37,6 @@
 
 - (void)viewDidLoad{
 	[super viewDidLoad];
-
 }
 /* Tint navbar items. */
 - (void)viewWillAppear:(BOOL)animated {
@@ -54,65 +56,19 @@
 	[super viewWillDisappear:animated];
 }
 
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
-	//获取偏移量
-	    CGPoint offset = scrollView.contentOffset;
-	    //判断是否改变
-	    if (offset.y < 0) {
-	        CGRect rect = self.headerView.frame;
-	  //我们只需要改变图片的y值和高度即可
-	        rect.origin.y = offset.y;
-	        rect.size.height = 200 - offset.y;
-	        self.headerView.frame = rect;
-	    }
-}
 - (id)tableView:(id)tableView viewForHeaderInSection:(NSInteger)section {
-	if (section == 0) {
-		    _headerView = [[NactroHeaderView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 150.0f) tweakName:@"HelloWorld" devTeamName:@"HelloDev" backgroundColor:[UIColor colorWithHexString:@"#3283ec"]];
-		// // add table header
-    //     CGFloat width = self.view.frame.size.width - 40;
-    //     UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, HEADER_HEIGHT)];
-		// 		headerView.backgroundColor = [UIColor colorWithHexString:@"#3283ec"];
-		// 		//headerView.backgroundColor = [UIColor clearColor];
-    //     // Title Label
-		// 		UIFont *titleFont = [UIFont PingFangRegularForSize:27];
-    //     NSString *title = @"BlurKillers XII";
-    //     CGSize labelSize = [title boundingRectWithSize:CGSizeMake(width, 100) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:titleFont} context:nil].size;
-    //     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10, 70, width, labelSize.height)];
-    //     label.text = title;
-    //     label.font = titleFont;
-    //     label.numberOfLines = 1;
-    //     label.adjustsFontSizeToFitWidth = YES;
-    //     label.minimumScaleFactor = 10.0f/12.0f;
-    //     label.clipsToBounds = YES;
-    //     label.textColor = [UIColor blackColor];
-    //     [headerView addSubview:label];
-		//
-    //     // Subtitle label
-    //     UIFont *subtitleFont = [UIFont PingFangRegularForSize:19];
-    //     NSString *subtitle = @"Nactro Team.";
-    //     CGSize subtitleLabelSize = [subtitle boundingRectWithSize:CGSizeMake(width, 60) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:subtitleFont} context:nil].size;
-    //     UILabel *sublabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 40, width, subtitleLabelSize.height)];
-    //     sublabel.text = subtitle;
-    //     sublabel.font = subtitleFont;
-    //     sublabel.numberOfLines = 1;
-    //     sublabel.adjustsFontSizeToFitWidth = YES;
-    //     sublabel.minimumScaleFactor = 10.0f/12.0f;
-    //     sublabel.clipsToBounds = YES;
-    //     sublabel.textColor = [UIColor blackColor];
-    //     [headerView addSubview:sublabel];
-	  return _headerView;
+	if (section == 0){
+	  return self.headerView;
 	}else{
 		return [super tableView:tableView viewForHeaderInSection:section];
 	}
 }
 
 - (void)openDonate {
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://apt.nactro.com/"]];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"alipayqr://platformapi/startapp?saId=10000007&qrcode=https://qr.alipay.com/tsx09384ad5mkh65g1irre0"]];
 }
 
 - (void)killSpringBoard{
-	  //if (command.size() >= 0)
 		pid_t pid;
     const char* args[] = {"killall", "backboardd", NULL};
     posix_spawn(&pid, "/usr/bin/killall", NULL, NULL, (char* const*)args, NULL);
@@ -125,27 +81,12 @@
 		if (res) {
 			UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"操作成功：即将注销设备。" message:nil delegate:self cancelButtonTitle:nil otherButtonTitles:nil];
 			[alert show];
-			//显示框
-			UIActivityIndicatorView *indicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
-			indicator.backgroundColor=[UIColor redColor];
-			indicator.center = CGPointMake(alert.bounds.size.width/2,  alert.bounds.size.height-40.0);
-			[indicator startAnimating];
-
-			[alert insertSubview:indicator atIndex:0];
 			//定时器
-			[NSTimer scheduledTimerWithTimeInterval:2.0f target:self selector:@selector(killSpringBoard) userInfo:[NSDictionary dictionaryWithObjectsAndKeys:alert, @"alert", @"testing ", @"key" ,nil]  repeats:NO];
+			[NSTimer scheduledTimerWithTimeInterval:2.0f target:self selector:@selector(killSpringBoard) userInfo:[NSDictionary dictionaryWithObjectsAndKeys:alert, @"alert", @"success ", @"key" ,nil]  repeats:NO];
 		}else{
 			UIAlertView *alert =[[UIAlertView alloc]initWithTitle:@"操作失败：未找到原有蒙版。" message:nil delegate:self cancelButtonTitle:nil otherButtonTitles:nil];
 			[alert show];
-			//显示框
-			UIActivityIndicatorView *indicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
-			indicator.backgroundColor=[UIColor redColor];
-			indicator.center = CGPointMake(alert.bounds.size.width/2,  alert.bounds.size.height-40.0);
-			[indicator startAnimating];
-
-			[alert insertSubview:indicator atIndex:0];
-			//定时器
-			[NSTimer scheduledTimerWithTimeInterval:2.0f target:self selector:@selector(dismissAlert:) userInfo:[NSDictionary dictionaryWithObjectsAndKeys:alert, @"alert", @"testing ", @"key" ,nil]  repeats:NO];
+			[NSTimer scheduledTimerWithTimeInterval:2.0f target:self selector:@selector(dismissAlert:) userInfo:[NSDictionary dictionaryWithObjectsAndKeys:alert, @"alert", @"dismiss ", @"key" ,nil]  repeats:NO];
 		}
 }
 
@@ -169,6 +110,22 @@
 	[settings addEntriesFromDictionary:[NSDictionary dictionaryWithContentsOfFile:path]];
 	[settings setObject:value forKey:specifier.properties[@"key"]];
 	[settings writeToFile:path atomically:YES];
+}
+
+-(void)save
+{
+    [self.view endEditing:YES];
+		UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"操作提示：保存成功！" message:nil delegate:self cancelButtonTitle:nil otherButtonTitles:nil];
+		[alert show];
+		[NSTimer scheduledTimerWithTimeInterval:2.0f target:self selector:@selector(dismissAlert:) userInfo:[NSDictionary dictionaryWithObjectsAndKeys:alert, @"alert", @"dismiss ", @"key" ,nil]  repeats:NO];
+}
+
+#pragma mark - lazyload
+- (NactroHeaderView *)headerView{
+	if (!_headerView) {
+			_headerView = [[NactroHeaderView alloc]initWithFrame:CGRectMake(0,0,kWidth,HEADER_HEIGHT) tweakName:tweakName devTeamName:@"Nactro Dev." backgroundColor:[UIColor colorWithHexString:@"#3283ec"]];
+	}
+	return _headerView;
 }
 
 @end

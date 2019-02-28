@@ -55,6 +55,7 @@
         UIView *contentView = [[UIView alloc] initWithFrame:CGRectZero];
         [contentView setTranslatesAutoresizingMaskIntoConstraints:NO];
         [self addSubview:contentView];
+        
         [[contentView.leadingAnchor constraintEqualToAnchor:_avatarImageView.trailingAnchor constant:17] setActive:YES];
         [[contentView.trailingAnchor constraintEqualToAnchor:self.layoutMarginsGuide.trailingAnchor] setActive:YES];
         [[contentView.centerYAnchor constraintEqualToAnchor:self.centerYAnchor] setActive:YES];

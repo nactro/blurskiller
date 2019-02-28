@@ -11,9 +11,17 @@
 #import "UIColor+Hex.h"
 
 @interface NactroHeaderView()
+@property (nonatomic, strong)UILabel *nameLabel;
+@property (nonatomic, strong)UILabel *devNameLabel;
 @end
 @implementation NactroHeaderView
-
+- (instancetype)initWithTweakName:(NSString *)tweakName devTeamName:(NSString *)devTeamName backgroundColor:(UIColor *)color{
+  self = [super init];
+  if (self) {
+    [self layoutWithTweakName:tweakName devTeamName:devTeamName backgroundColor:color];
+  }
+  return self;
+}
 - (instancetype)initWithFrame:(CGRect)frame tweakName:(NSString *)tweakName devTeamName:(NSString *)devTeamName backgroundColor:(UIColor *)color{
     self = [super initWithFrame:frame];
     if (self) {
@@ -24,33 +32,27 @@
 
 - (void)layoutWithTweakName:(NSString *)tweakName devTeamName:(NSString *)devTeamName backgroundColor:(UIColor *)color{
     self.backgroundColor = color;
-    CGFloat width = self.frame.size.width - 40;
-    // Title Label
-    UIFont *titleFont = [UIFont PingFangRegularForSize:27];
-    NSString *title = tweakName;
-    CGSize labelSize = [title boundingRectWithSize:CGSizeMake(width, 100) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:titleFont} context:nil].size;
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10, 70, width, labelSize.height)];
-    label.text = title;
-    label.font = titleFont;
-    label.numberOfLines = 1;
-    label.adjustsFontSizeToFitWidth = YES;
-    label.minimumScaleFactor = 10.0f/12.0f;
-    label.clipsToBounds = YES;
-    label.textColor = [UIColor whiteColor];
-    [self addSubview:label];
-    
-    // Subtitle label
-    UIFont *subtitleFont = [UIFont PingFangRegularForSize:19];
-    NSString *subtitle = devTeamName;
-    CGSize subtitleLabelSize = [subtitle boundingRectWithSize:CGSizeMake(width, 60) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:subtitleFont} context:nil].size;
-    UILabel *sublabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 40, width, subtitleLabelSize.height)];
-    sublabel.text = subtitle;
-    sublabel.font = subtitleFont;
-    sublabel.numberOfLines = 1;
-    sublabel.adjustsFontSizeToFitWidth = YES;
-    sublabel.minimumScaleFactor = 10.0f/12.0f;
-    sublabel.clipsToBounds = YES;
-    sublabel.textColor = [UIColor whiteColor];
-    [self addSubview:sublabel];
+
+    _nameLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+    _nameLabel.text = tweakName;
+    _nameLabel.textColor = [UIColor whiteColor];
+    [_nameLabel setFont:[UIFont PingFangRegularForSize:27]];
+    [_nameLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [self addSubview:_nameLabel];
+    [[_nameLabel.leadingAnchor constraintEqualToAnchor:self.leadingAnchor constant:17] setActive:YES];
+    [[_nameLabel.trailingAnchor constraintEqualToAnchor:self.trailingAnchor] setActive:YES];
+    //[[_nameLabel.topAnchor constraintEqualToAnchor:self.topAnchor] setActive:YES];
+    [[_nameLabel.centerYAnchor constraintEqualToAnchor:self.centerYAnchor] setActive:YES];
+    //[[_nameLabel.bottomAnchor constraintEqualToAnchor:self.bottomAnchor constant:17] setActive:YES];
+    _devNameLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+    _devNameLabel.text = devTeamName;
+    _devNameLabel.textColor = [UIColor whiteColor];
+    [_devNameLabel setFont:[UIFont PingFangRegularForSize:19]];
+    [_devNameLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [self addSubview:_devNameLabel];
+    [[_devNameLabel.leadingAnchor constraintEqualToAnchor:self.leadingAnchor constant:17] setActive:YES];
+    [[_devNameLabel.trailingAnchor constraintEqualToAnchor:self.trailingAnchor] setActive:YES];
+    [[_devNameLabel.bottomAnchor constraintEqualToAnchor:_nameLabel.topAnchor] setActive:YES];
+
 }
 @end

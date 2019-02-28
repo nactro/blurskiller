@@ -9,10 +9,17 @@
 		<key>cell</key>
 		<string>PSGroupCell</string>
 		<key>label</key>
-		<string>全局开关类</string>
+		<string>BlankCell</string>
+		</dict>
+
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>全局开关</string>
 		</dict>
 	<!--开启全局透明-->
-	<dict>
+	<!-- <dict>
 		<key>cell</key>
 		<string>PSSwitchCell</string>
 		<key>default</key>
@@ -25,7 +32,7 @@
 		<string>开启全局透明</string>
 		<key>PostNotification</key>
 		<string>com.nactro.blurskillersettings/changed</string>
-	</dict>
+	</dict> -->
 
 	<!--开启全局微透-->
 	<dict>
@@ -83,7 +90,7 @@
 </dict>
 
 <!--开启电话透明-->
-<dict>
+<!-- <dict>
 <key>cell</key>
 <string>PSSwitchCell</string>
 <key>default</key>
@@ -96,13 +103,13 @@
 <string>开启电话透明</string>
 <key>PostNotification</key>
 <string>com.nactro.blurskillersettings/changed</string>
-</dict>
+</dict> -->
 
 <dict>
 	<key>cell</key>
 	<string>PSEditTextCell</string>
 	<key>placeholder</key>
-	<string>0.2</string>
+	<string>有效数值：0.0~1.0</string>
 	<key>bestGuess</key>
 	<string>0.2</string>
 	<key>defaults</key>
@@ -112,14 +119,31 @@
 	<key>key</key>
 	<string>maskAlpha</string>
 	<key>label</key>
-	<string>输入自定义遮罩Alpha值：</string>
+	<string>输入自定义透明度值：</string>
 </dict>
 
 <dict>
 <key>cell</key>
-<string>PSGroupCell</string>
+<string>PSButtonCell</string>
 <key>label</key>
-<string>功能开关</string>
+<string>保存透明度值</string>
+<key>action</key>
+<string>save</string>
+</dict>
+
+<dict>
+	<key>cell</key>
+	<string>PSGroupCell</string>
+	<key>label</key>
+	<string>请在更换壁纸后，点击“创建新的底层蒙版”，进行变更。</string>
+</dict>
+<dict>
+<key>action</key>
+<string>killSpringBoard</string>
+<key>label</key>
+<string>注销设备</string>
+<key>cell</key>
+<string>PSButtonCell</string>
 </dict>
 
 <dict>
@@ -132,17 +156,24 @@
 </dict>
 
 <dict>
-<key>action</key>
-<string>killSpringBoard</string>
+<key>cell</key>
+<string>PSGroupCell</string>
 <key>label</key>
-<string>注销设备</string>
+<string>支持我们</string>
+</dict>
+
+<dict>
+<key>action</key>
+<string>openDonate</string>
+<key>label</key>
+<string>赞助我们团队</string>
 <key>cell</key>
 <string>PSButtonCell</string>
 </dict>
 
 <dict>
 <key>label</key>
-<string>Credits</string>
+<string>团队展示</string>
 <key>footerText</key>
 <string>© Nectra Development 2019</string>
 <key>cell</key>
@@ -189,21 +220,7 @@
 <string>NactroCreditCell</string>
 </dict>
 
-<dict>
-<key>cell</key>
-<string>PSGroupCell</string>
-<key>label</key>
-<string>支持</string>
-</dict>
 
-<dict>
-<key>action</key>
-<string>openDonate</string>
-<key>label</key>
-<string>赞助我们团队</string>
-<key>cell</key>
-<string>PSButtonCell</string>
-</dict>
 
 </array>
 	<key>title</key>

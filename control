@@ -1,9 +1,10 @@
 Package: com.nactro.blurskiller
-Name: blursKiller
+Name: 透明板
 Depends: mobilesubstrate
-Version: 0.0.1
+Version: 1.1.1
 Architecture: iphoneos-arm
-Description: An awesome MobileSubstrate tweak!
+Description: 可选择性将设置及文件背景由系统白变成当前锁屏壁纸
 Maintainer: NactroTeam
 Author: NactroTeam
 Section: Tweaks
+Icon: file:///Library/PreferenceBundles/BlursKillerSettings.bundle/icon.png
