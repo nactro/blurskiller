@@ -1,7 +1,7 @@
 Package: com.nactro.blurskiller
 Name: 透明板
 Depends: mobilesubstrate
-Version: 1.1.1
+Version: 1.1.2
 Architecture: iphoneos-arm
 Description: 可选择性将设置及文件背景由系统白变成当前锁屏壁纸
 Maintainer: NactroTeam

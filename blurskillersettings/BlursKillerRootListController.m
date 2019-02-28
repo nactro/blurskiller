@@ -13,7 +13,7 @@
 
 static BOOL KBSettings = NO;
 static NSString *kPrefsPath = @"/var/mobile/Library/Preferences/com.nactro.blurskillersettings.plist";
-static NSString *tweakName = @"透明板 v1.1.1";
+static NSString *tweakName = @"透明板 v1.1.2";
 #define kWidth  [UIScreen mainScreen].bounds.size.width
 #define HEADER_HEIGHT 120.0f
 
