@@ -3,7 +3,7 @@ ARCHS = arm64
 include $(THEOS)/makefiles/common.mk
 BlursKillerSettings_CFLAGS += -fobjc-arc
 BUNDLE_NAME = BlursKillerSettings
-BlursKillerSettings_FILES = BlursKillerRootListController.m NactroCreditOption.m NactroCreditService.m NactroCreditCell.m UIColor+Hex.m UIFont+Extension.m
+BlursKillerSettings_FILES = BlursKillerRootListController.m NactroCreditOption.m NactroCreditService.m NactroCreditCell.m UIColor+Hex.m UIFont+Extension.m  NactroHeaderView.m
 BlursKillerSettings_INSTALL_PATH = /Library/PreferenceBundles
 BlursKillerSettings_FRAMEWORKS = UIKit
 BlursKillerSettings_PRIVATE_FRAMEWORKS = Preferences

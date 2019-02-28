@@ -10,7 +10,7 @@ static BOOL folderTrans = NO;
 static BOOL KBSettings = NO;
 static BOOL KBMobilePhone = NO;
 static float maskAlpha = 0;
-static NSString * wallpaperPath = @"/var/mobile/wallpaper.png";
+static NSString * kWallpaperPath = @"/var/mobile/wallpaper.png";
 
 static void loadPrefs() {
   NSMutableDictionary *prefs = [[NSMutableDictionary alloc] initWithContentsOfFile:@"/var/mobile/Library/Preferences/com.nactro.blurskillersettings.plist"];
@@ -110,14 +110,14 @@ return %orig;
 - (void)didMoveToWindow {
     %orig;
     if (KBSettings || KBMobilePhone) {
-        if (![[NSFileManager defaultManager] fileExistsAtPath:wallpaperPath]) {
+        if (![[NSFileManager defaultManager] fileExistsAtPath:kWallpaperPath]) {
             UIView *view = self;
             CGFloat scale = [UIScreen mainScreen].scale;
             UIGraphicsBeginImageContextWithOptions(view.frame.size,NO,scale);
             [view.layer renderInContext:UIGraphicsGetCurrentContext()];
             UIImage *wallpaperImage = UIGraphicsGetImageFromCurrentImageContext();
             UIGraphicsEndImageContext();
-            [UIImagePNGRepresentation(wallpaperImage) writeToFile:wallpaperPath atomically:YES];
+            [UIImagePNGRepresentation(wallpaperImage) writeToFile:kWallpaperPath atomically:YES];
         }
     }
   }
@@ -139,7 +139,7 @@ return %orig;
     UITableView *tableView = MSHookIvar<UITableView *>(self,"_table");
     tableView.backgroundColor = [UIColor clearColor];
     tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    UIImageView *wallpaperView = [[UIImageView alloc] initWithImage:[UIImage imageWithContentsOfFile:wallpaperPath]];
+    UIImageView *wallpaperView = [[UIImageView alloc] initWithImage:[UIImage imageWithContentsOfFile:kWallpaperPath]];
     CGRect screenFrame = [[UIScreen mainScreen] bounds];
     wallpaperView.frame = screenFrame;
     wallpaperView.contentMode = UIViewContentModeScaleAspectFit;
@@ -218,15 +218,14 @@ return %orig;
 
 /*----------拨号界面透明----------*/
 %hook DialerController
-- (void)setBackgroundStyle:(long long)arg1 animated:(_Bool)arg2{
+- (void)viewWillAppear:(_Bool)arg1{
   if (KBMobilePhone) {
     UIView *dialerView = MSHookIvar<UIView *>(self,"_dialerView");
-    dialerView.backgroundColor = [UIColor clearColor];
-  }else{
-    %orig(arg1,arg2);
-  }
+    dialerView.backgroundColor = [UIColor whiteColor];
+}else{
+  %orig(arg1);
 }
-
+}
 %end
 
 %ctor {

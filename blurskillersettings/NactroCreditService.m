@@ -90,6 +90,8 @@
         return [[NactroCreditService alloc] initWithActionTitleFormatter:@"Donate to {username} using PayPal" linkFormatters:@[@"https://www.paypal.me/{username}"] imageName:@"Service-PayPal"];
     } else if ([name isEqualToString:@"email"]) {
         return [[NactroCreditService alloc] initWithActionTitleFormatter:@"Email {username}" linkFormatters:@[@"mailto:{username}"] imageName:@"Service-Email"];
+    } else if ([name isEqualToString:@"weibo"]) {
+        return [[NactroCreditService alloc] initWithActionTitleFormatter:@"Follow {username} on Weibo" linkFormatters:@[@"https://weibo.com/u/{username}"] imageName:@"Service-Weibo"];
     }
     return [[NactroCreditService alloc] initWithActionTitleFormatter:@"Unknown" linkFormatters:@[] imageName:@"Service-Unknown"];
 }

@@ -9,9 +9,12 @@
 #import "UIFont+Extension.h"
 #include <spawn.h>
 #import <UIKit/UIKit.h>
+#import "NactroHeaderView.h"
 
 #define HEADER_HEIGHT 160.0f
-
+@interface BlursKillerRootListController()
+@property (nonatomic, strong)NactroHeaderView *headerView;
+@end
 @implementation BlursKillerRootListController
 
 - (NSArray *)specifiers {
@@ -29,6 +32,10 @@
 	}
 }
 
+- (void)viewDidLoad{
+	[super viewDidLoad];
+
+}
 /* Tint navbar items. */
 - (void)viewWillAppear:(BOOL)animated {
 	[super viewWillAppear:animated];
@@ -47,40 +54,54 @@
 	[super viewWillDisappear:animated];
 }
 
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+	//获取偏移量
+	    CGPoint offset = scrollView.contentOffset;
+	    //判断是否改变
+	    if (offset.y < 0) {
+	        CGRect rect = self.headerView.frame;
+	  //我们只需要改变图片的y值和高度即可
+	        rect.origin.y = offset.y;
+	        rect.size.height = 200 - offset.y;
+	        self.headerView.frame = rect;
+	    }
+}
 - (id)tableView:(id)tableView viewForHeaderInSection:(NSInteger)section {
 	if (section == 0) {
-		// add table header
-        CGFloat width = self.view.frame.size.width - 40;
-        UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, HEADER_HEIGHT)];
-				headerView.backgroundColor = [UIColor colorWithHexString:@"#3283ec"];
-        // Title Label
-				UIFont *titleFont = [UIFont PingFangRegularForSize:27];
-        NSString *title = @"BlurKillers XII";
-        CGSize labelSize = [title boundingRectWithSize:CGSizeMake(width, 100) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:titleFont} context:nil].size;
-        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10, 70, width, labelSize.height)];
-        label.text = title;
-        label.font = titleFont;
-        label.numberOfLines = 1;
-        label.adjustsFontSizeToFitWidth = YES;
-        label.minimumScaleFactor = 10.0f/12.0f;
-        label.clipsToBounds = YES;
-        label.textColor = [UIColor whiteColor];
-        [headerView addSubview:label];
-
-        // Subtitle label
-        UIFont *subtitleFont = [UIFont PingFangRegularForSize:19];
-        NSString *subtitle = @"Nactro Team.";
-        CGSize subtitleLabelSize = [subtitle boundingRectWithSize:CGSizeMake(width, 60) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:subtitleFont} context:nil].size;
-        UILabel *sublabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 40, width, subtitleLabelSize.height)];
-        sublabel.text = subtitle;
-        sublabel.font = subtitleFont;
-        sublabel.numberOfLines = 1;
-        sublabel.adjustsFontSizeToFitWidth = YES;
-        sublabel.minimumScaleFactor = 10.0f/12.0f;
-        sublabel.clipsToBounds = YES;
-        sublabel.textColor = [UIColor whiteColor];
-        [headerView addSubview:sublabel];
-	  return headerView;
+		    _headerView = [[NactroHeaderView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 150.0f) tweakName:@"HelloWorld" devTeamName:@"HelloDev" backgroundColor:[UIColor colorWithHexString:@"#3283ec"]];
+		// // add table header
+    //     CGFloat width = self.view.frame.size.width - 40;
+    //     UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, HEADER_HEIGHT)];
+		// 		headerView.backgroundColor = [UIColor colorWithHexString:@"#3283ec"];
+		// 		//headerView.backgroundColor = [UIColor clearColor];
+    //     // Title Label
+		// 		UIFont *titleFont = [UIFont PingFangRegularForSize:27];
+    //     NSString *title = @"BlurKillers XII";
+    //     CGSize labelSize = [title boundingRectWithSize:CGSizeMake(width, 100) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:titleFont} context:nil].size;
+    //     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10, 70, width, labelSize.height)];
+    //     label.text = title;
+    //     label.font = titleFont;
+    //     label.numberOfLines = 1;
+    //     label.adjustsFontSizeToFitWidth = YES;
+    //     label.minimumScaleFactor = 10.0f/12.0f;
+    //     label.clipsToBounds = YES;
+    //     label.textColor = [UIColor blackColor];
+    //     [headerView addSubview:label];
+		//
+    //     // Subtitle label
+    //     UIFont *subtitleFont = [UIFont PingFangRegularForSize:19];
+    //     NSString *subtitle = @"Nactro Team.";
+    //     CGSize subtitleLabelSize = [subtitle boundingRectWithSize:CGSizeMake(width, 60) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:subtitleFont} context:nil].size;
+    //     UILabel *sublabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 40, width, subtitleLabelSize.height)];
+    //     sublabel.text = subtitle;
+    //     sublabel.font = subtitleFont;
+    //     sublabel.numberOfLines = 1;
+    //     sublabel.adjustsFontSizeToFitWidth = YES;
+    //     sublabel.minimumScaleFactor = 10.0f/12.0f;
+    //     sublabel.clipsToBounds = YES;
+    //     sublabel.textColor = [UIColor blackColor];
+    //     [headerView addSubview:sublabel];
+	  return _headerView;
 	}else{
 		return [super tableView:tableView viewForHeaderInSection:section];
 	}

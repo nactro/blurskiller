@@ -40,6 +40,8 @@
         self.creditOptions = [NSArray array];
 
         _avatarImageView = [[UIImageView alloc] initWithFrame:CGRectZero];
+        _avatarImageView.layer.borderWidth = 1;//边框宽度
+        _avatarImageView.layer.borderColor = [UIColor blackColor].CGColor;//边框颜色
         [_avatarImageView setBackgroundColor:[UIColor colorWithWhite:0.847 alpha:1]];
         [_avatarImageView.layer setMasksToBounds:YES];
         [_avatarImageView setClipsToBounds:YES];

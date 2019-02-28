@@ -5,6 +5,12 @@
 	<key>items</key>
 	<array>
 
+		<dict>
+		<key>cell</key>
+		<string>PSGroupCell</string>
+		<key>label</key>
+		<string>全局开关类</string>
+		</dict>
 	<!--开启全局透明-->
 	<dict>
 		<key>cell</key>
@@ -134,7 +140,7 @@
 <string>PSButtonCell</string>
 </dict>
 
-	<dict>
+<dict>
 <key>label</key>
 <string>Credits</string>
 <key>footerText</key>
@@ -150,33 +156,33 @@
 		<key>service</key>
 		<string>website</string>
 		<key>username</key>
-		<string>https:/7float.com/</string>
+		<string>https:/apt.nactro.com</string>
 	</dict>
 	<dict>
 		<key>service</key>
-		<string>twitter</string>
+		<string>weibo</string>
 		<key>username</key>
-		<string>ryaneddisford</string>
+		<string>5788815698</string>
 	</dict>
 	<dict>
 		<key>service</key>
 		<string>email</string>
 		<key>username</key>
-		<string>lazysloths@yahoo.com</string>
+		<string>NactroDev@Gmail.com</string>
 	</dict>
 	<dict>
 		<key>service</key>
 		<string>github</string>
 		<key>username</key>
-		<string>polichan</string>
+		<string>nactro</string>
 	</dict>
 </array>
 <key>avatarImage</key>
-<string>Hexwell.png</string>
+<string>nactro.png</string>
 <key>creditPosition</key>
-<string>iOS 开发者</string>
+<string>Development Group</string>
 <key>creditName</key>
-<string>Hexwell</string>
+<string>Nactro.</string>
 <key>height</key>
 <integer>84</integer>
 <key>cellClass</key>
@@ -184,75 +190,10 @@
 </dict>
 
 <dict>
-<key>creditOptions</key>
-<array>
-	<dict>
-		<key>service</key>
-		<string>email</string>
-		<key>username</key>
-		<string>2357066100@qq.com</string>
-	</dict>
-</array>
-<key>avatarImage</key>
-<string>iNeko.png</string>
-<key>creditPosition</key>
-<string>iOS 开发者</string>
-<key>creditName</key>
-<string>iNeko</string>
-<key>height</key>
-<integer>84</integer>
-<key>cellClass</key>
-<string>NactroCreditCell</string>
-</dict>
-
-<dict>
-<key>creditOptions</key>
-<array>
-	<dict>
-		<key>service</key>
-		<string>email</string>
-		<key>username</key>
-		<string>hintay@me.com</string>
-	</dict>
-	<dict>
-		<key>service</key>
-		<string>github</string>
-		<key>username</key>
-		<string>Hintay</string>
-	</dict>
-</array>
-<key>avatarImage</key>
-<string>Hintay.png</string>
-<key>creditPosition</key>
-<string>Nactro源核心维护</string>
-<key>creditName</key>
-<string>Hintay</string>
-<key>height</key>
-<integer>84</integer>
-<key>cellClass</key>
-<string>NactroCreditCell</string>
-</dict>
-
-<dict>
-<key>creditOptions</key>
-<array>
-	<dict>
-		<key>service</key>
-		<string>email</string>
-		<key>username</key>
-		<string>ClydeChank@Gmail.com</string>
-	</dict>
-</array>
-<key>avatarImage</key>
-<string>YNGSTN.png</string>
-<key>creditPosition</key>
-<string>Nactro微信公众号运营</string>
-<key>creditName</key>
-<string>YNGSTN</string>
-<key>height</key>
-<integer>84</integer>
-<key>cellClass</key>
-<string>NactroCreditCell</string>
+<key>cell</key>
+<string>PSGroupCell</string>
+<key>label</key>
+<string>支持</string>
 </dict>
 
 <dict>
