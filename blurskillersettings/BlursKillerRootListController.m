@@ -11,6 +11,8 @@
 #import <UIKit/UIKit.h>
 #import "NactroHeaderView.h"
 
+static BOOL KBSettings = NO;
+static NSString *kPrefsPath = @"/var/mobile/Library/Preferences/com.nactro.blurskillersettings.plist";
 static NSString *tweakName = @"透明板 v1.1.1";
 #define kWidth  [UIScreen mainScreen].bounds.size.width
 #define HEADER_HEIGHT 120.0f
@@ -45,9 +47,18 @@ static NSString *tweakName = @"透明板 v1.1.1";
 	UIImage *icon = [UIImage imageWithContentsOfFile:@"/Library/PreferenceBundles/BlursKillerSettings.bundle/icon.png"];
 	//init
 	self.navigationItem.titleView = [[UIImageView alloc] initWithImage:icon];
-	//self.navigationController.navigationController.navigationBar.barTintColor = [UIColor colorWithHexString:@"#3283ec"];
 	// tint navbar
 	self.navigationController.navigationController.navigationBar.tintColor = [UIColor colorWithHexString:@"#3283ec"];
+	// 读取是否开启设置透明，如果开启了，则把背景的颜色改成 clearColor
+	NSMutableDictionary *prefs = [[NSMutableDictionary alloc] initWithContentsOfFile:kPrefsPath];
+  if (prefs) {
+    KBSettings = ([[prefs objectForKey:@"KBSettings"] boolValue]?:KBSettings);
+  }
+	if (KBSettings) {
+		self.headerView.backgroundColor = [UIColor clearColor];
+		self.headerView.nameLabel.textColor = [UIColor whiteColor];
+		self.headerView.devNameLabel.textColor = [UIColor whiteColor];
+	}
 }
 - (void)viewWillDisappear:(BOOL)animated {
 	// un-tint navbar

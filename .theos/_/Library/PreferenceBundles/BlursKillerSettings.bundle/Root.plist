@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>items</key>
+	<array>
+
+		<dict>
+		<key>cell</key>
+		<string>PSGroupCell</string>
+		<key>label</key>
+		<string>BlankCell</string>
+		</dict>
+
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>全局开关</string>
+		</dict>
+	<!--开启全局透明-->
+	<!-- <dict>
+		<key>cell</key>
+		<string>PSSwitchCell</string>
+		<key>default</key>
+		<false/>
+		<key>defaults</key>
+		<string>com.nactro.blurskillersettings</string>
+		<key>key</key>
+		<string>globalTransparent</string>
+		<key>label</key>
+		<string>开启全局透明</string>
+		<key>PostNotification</key>
+		<string>com.nactro.blurskillersettings/changed</string>
+	</dict> -->
+
+	<!--开启全局微透-->
+	<dict>
+		<key>cell</key>
+		<string>PSSwitchCell</string>
+		<key>default</key>
+		<false/>
+		<key>defaults</key>
+		<string>com.nactro.blurskillersettings</string>
+		<key>key</key>
+		<string>globalSelfTrans</string>
+		<key>label</key>
+		<string>开启全局微透</string>
+		<key>PostNotification</key>
+		<string>com.nactro.blurskillersettings/changed</string>
+	</dict>
+
+	<dict>
+		<key>cell</key>
+		<string>PSGroupCell</string>
+		<key>label</key>
+		<string>自定义功能</string>
+	</dict>
+
+<!--开启文件夹透明-->
+<dict>
+<key>cell</key>
+<string>PSSwitchCell</string>
+<key>default</key>
+<false/>
+<key>defaults</key>
+<string>com.nactro.blurskillersettings</string>
+<key>key</key>
+<string>folderTrans</string>
+<key>label</key>
+<string>开启文件夹透明</string>
+<key>PostNotification</key>
+<string>com.nactro.blurskillersettings/changed</string>
+</dict>
+
+<!--开启设置透明-->
+<dict>
+<key>cell</key>
+<string>PSSwitchCell</string>
+<key>default</key>
+<false/>
+<key>defaults</key>
+<string>com.nactro.blurskillersettings</string>
+<key>key</key>
+<string>KBSettings</string>
+<key>label</key>
+<string>开启设置透明</string>
+<key>PostNotification</key>
+<string>com.nactro.blurskillersettings/changed</string>
+</dict>
+
+<!--开启电话透明-->
+<!-- <dict>
+<key>cell</key>
+<string>PSSwitchCell</string>
+<key>default</key>
+<false/>
+<key>defaults</key>
+<string>com.nactro.blurskillersettings</string>
+<key>key</key>
+<string>KBMobilePhone</string>
+<key>label</key>
+<string>开启电话透明</string>
+<key>PostNotification</key>
+<string>com.nactro.blurskillersettings/changed</string>
+</dict> -->
+
+<dict>
+	<key>cell</key>
+	<string>PSEditTextCell</string>
+	<key>placeholder</key>
+	<string>有效数值：0.0~1.0</string>
+	<key>bestGuess</key>
+	<string>0.2</string>
+	<key>defaults</key>
+	<string>com.nactro.blurskillersettings</string>
+	<key>isDecimalPad</key>
+	<true/>
+	<key>key</key>
+	<string>maskAlpha</string>
+	<key>label</key>
+	<string>输入自定义透明度值：</string>
+</dict>
+
+<dict>
+<key>cell</key>
+<string>PSButtonCell</string>
+<key>label</key>
+<string>保存透明度值</string>
+<key>action</key>
+<string>save</string>
+</dict>
+
+<dict>
+	<key>cell</key>
+	<string>PSGroupCell</string>
+	<key>label</key>
+	<string>请在更换壁纸后，点击“创建新的底层蒙版”，进行变更。</string>
+</dict>
+<dict>
+<key>action</key>
+<string>killSpringBoard</string>
+<key>label</key>
+<string>注销设备</string>
+<key>cell</key>
+<string>PSButtonCell</string>
+</dict>
+
+<dict>
+<key>action</key>
+<string>getNewWallpaper</string>
+<key>label</key>
+<string>创建新的底层蒙版</string>
+<key>cell</key>
+<string>PSButtonCell</string>
+</dict>
+
+<dict>
+<key>cell</key>
+<string>PSGroupCell</string>
+<key>label</key>
+<string>支持我们</string>
+</dict>
+
+<dict>
+<key>action</key>
+<string>openDonate</string>
+<key>label</key>
+<string>赞助我们团队</string>
+<key>cell</key>
+<string>PSButtonCell</string>
+</dict>
+
+<dict>
+<key>label</key>
+<string>团队展示</string>
+<key>footerText</key>
+<string>© Nectra Development 2019</string>
+<key>cell</key>
+<string>PSGroupCell</string>
+</dict>
+
+<dict>
+<key>creditOptions</key>
+<array>
+	<dict>
+		<key>service</key>
+		<string>website</string>
+		<key>username</key>
+		<string>https:/apt.nactro.com</string>
+	</dict>
+	<dict>
+		<key>service</key>
+		<string>weibo</string>
+		<key>username</key>
+		<string>5788815698</string>
+	</dict>
+	<dict>
+		<key>service</key>
+		<string>email</string>
+		<key>username</key>
+		<string>NactroDev@Gmail.com</string>
+	</dict>
+	<dict>
+		<key>service</key>
+		<string>github</string>
+		<key>username</key>
+		<string>nactro</string>
+	</dict>
+</array>
+<key>avatarImage</key>
+<string>nactro.png</string>
+<key>creditPosition</key>
+<string>Development Group</string>
+<key>creditName</key>
+<string>Nactro.</string>
+<key>height</key>
+<integer>84</integer>
+<key>cellClass</key>
+<string>NactroCreditCell</string>
+</dict>
+
+
+
+</array>
+	<key>title</key>
+	<string>BlursKillerSettings</string>
+</dict>
+</plist>

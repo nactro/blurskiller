@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "UIFont+Extension.h"
 @interface NactroHeaderView : UIView
+@property (nonatomic, strong)UILabel *nameLabel;
+@property (nonatomic, strong)UILabel *devNameLabel;
 - (instancetype)initWithTweakName:(NSString *)tweakName devTeamName:(NSString *)devTeamName backgroundColor:(UIColor *)color;
 - (instancetype)initWithFrame:(CGRect)frame tweakName:(NSString *)tweakName devTeamName:(NSString *)devTeamName backgroundColor:(UIColor *)color;
 @end
