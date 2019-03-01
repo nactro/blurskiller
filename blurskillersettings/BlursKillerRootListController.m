@@ -11,9 +11,10 @@
 #import <UIKit/UIKit.h>
 #import "NactroHeaderView.h"
 
+static BOOL KBDarkText = NO;
 static BOOL KBSettings = NO;
 static NSString *kPrefsPath = @"/var/mobile/Library/Preferences/com.nactro.blurskillersettings.plist";
-static NSString *tweakName = @"透明板 v1.1.2";
+static NSString *tweakName = @"透明板 v1.1.3";
 #define kWidth  [UIScreen mainScreen].bounds.size.width
 #define HEADER_HEIGHT 120.0f
 
@@ -53,11 +54,18 @@ static NSString *tweakName = @"透明板 v1.1.2";
 	NSMutableDictionary *prefs = [[NSMutableDictionary alloc] initWithContentsOfFile:kPrefsPath];
   if (prefs) {
     KBSettings = ([[prefs objectForKey:@"KBSettings"] boolValue]?:KBSettings);
+		KBDarkText = ([[prefs objectForKey:@"KBDarkText"] boolValue] ?: KBDarkText);
   }
 	if (KBSettings) {
-		self.headerView.backgroundColor = [UIColor clearColor];
-		self.headerView.nameLabel.textColor = [UIColor whiteColor];
-		self.headerView.devNameLabel.textColor = [UIColor whiteColor];
+		if (KBDarkText) {
+			self.headerView.backgroundColor = [UIColor clearColor];
+			self.headerView.nameLabel.textColor = [UIColor blackColor];
+			self.headerView.devNameLabel.textColor = [UIColor blackColor];
+		}else{
+			self.headerView.backgroundColor = [UIColor clearColor];
+			self.headerView.nameLabel.textColor = [UIColor whiteColor];
+			self.headerView.devNameLabel.textColor = [UIColor whiteColor];
+		}
 	}
 }
 - (void)viewWillDisappear:(BOOL)animated {

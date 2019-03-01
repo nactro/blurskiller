@@ -10,6 +10,7 @@ static BOOL folderTrans = NO;
 static BOOL KBSettings = NO;
 static BOOL KBMobilePhone = NO;
 static float maskAlpha = 0;
+static BOOL KBDarkText = NO;
 static NSString * kWallpaperPath = @"/var/mobile/wallpaper.png";
 
 static void loadPrefs() {
@@ -21,6 +22,7 @@ static void loadPrefs() {
     KBSettings = ([[prefs objectForKey:@"KBSettings"] boolValue]?:KBSettings);
     KBMobilePhone = ([[prefs objectForKey:@"KBMobilePhone"] boolValue]?:KBMobilePhone);
     maskAlpha = ([[prefs objectForKey:@"maskAlpha"] floatValue] ?: maskAlpha);
+    KBDarkText = ([[prefs objectForKey:@"KBDarkText"] boolValue] ?: KBDarkText);
   }
   [prefs release];
 }
@@ -157,13 +159,62 @@ return %orig;
   if (KBSettings) {
     UITableViewCell *cell = %orig(arg1,arg2);
     cell.backgroundColor = [UIColor clearColor];
-    cell.textLabel.textColor = [UIColor whiteColor];
+    if (KBDarkText) {
+      cell.textLabel.textColor = [UIColor blackColor];
+    }else{
+      cell.textLabel.textColor = [UIColor whiteColor];
+    }
     return cell;
   }
   else{ return %orig(arg1,arg2); }
 }
 %end
-
+/*--------------设置界面WI-FI透明-------------*/
+// %hook WFAirportViewController
+//
+// - (void)viewWillAppear:(BOOL)arg1 {
+//   %orig(arg1);
+//   if (KBSettings) {
+//     UITableView *tableView = MSHookIvar<UITableView *>(self,"_tableView");
+//     tableView.backgroundColor = [UIColor clearColor];
+//     tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+//     UIImageView *wallpaperView = [[UIImageView alloc] initWithImage:[UIImage imageWithContentsOfFile:kWallpaperPath]];
+//     CGRect screenFrame = [[UIScreen mainScreen] bounds];
+//     wallpaperView.frame = screenFrame;
+//     wallpaperView.contentMode = UIViewContentModeScaleAspectFit;
+//     UIView *darkMaskView = [[UIView alloc] initWithFrame:screenFrame];
+//     //darkMaskView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:alpha];
+//     darkMaskView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:maskAlpha];
+//     [wallpaperView addSubview:darkMaskView];
+//     tableView.backgroundView = wallpaperView;
+//     [darkMaskView release];
+//     [wallpaperView release];
+//   }
+// }
+// -(BOOL)_isChinaDevice{
+//   return YES;
+// }
+// -(BOOL)userAutoJoinEnabled{
+//   return YES;
+// }
+// -(BOOL)_askToJoinEnabled{
+//   return YES;
+// }
+//
+// -(id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2{
+//   if (KBSettings) {
+//     UITableViewCell *cell = %orig(arg1,arg2);
+//     cell.backgroundColor = [UIColor clearColor];
+//     if (KBDarkText) {
+//       cell.textLabel.textColor = [UIColor blackColor];
+//     }else{
+//       cell.textLabel.textColor = [UIColor whiteColor];
+//     }
+//     return cell;
+//   }
+//   else{ return %orig(arg1,arg2); }
+// }
+// %end
 
 /*--------------搜索框透明--------------*/
 %hook PSSearchController
@@ -194,10 +245,18 @@ return %orig;
   if (KBSettings) {
     [self.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
     [self.navigationBar setShadowImage:[UIImage new]];
-    [self.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
-    // 增加大标题颜色修改
-    self.navigationBar.largeTitleTextAttributes = @{NSForegroundColorAttributeName:[UIColor whiteColor]};
-    self.navigationBar.tintColor = [UIColor whiteColor];
+    if (KBDarkText) {
+      [self.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor blackColor]}];
+      // 增加大标题颜色修改
+      self.navigationBar.largeTitleTextAttributes = @{NSForegroundColorAttributeName:[UIColor blackColor]};
+      self.navigationBar.tintColor = [UIColor blackColor];
+    }else{
+      [self.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
+      // 增加大标题颜色修改
+      self.navigationBar.largeTitleTextAttributes = @{NSForegroundColorAttributeName:[UIColor whiteColor]};
+      self.navigationBar.tintColor = [UIColor whiteColor];
+    }
+
   }
   %orig(arg1);
 }
@@ -208,7 +267,11 @@ return %orig;
 - (void)layoutSubviews{
   if (KBSettings) {
     UILabel *accountLable = MSHookIvar<UILabel *>(self,"_detailTextLabel");
-    accountLable.textColor = [UIColor whiteColor];
+    if (KBDarkText) {
+      accountLable.textColor = [UIColor blackColor];
+    }else{
+      accountLable.textColor = [UIColor whiteColor];
+    }
   }
   %orig;
 }
