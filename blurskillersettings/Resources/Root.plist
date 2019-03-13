@@ -16,7 +16,7 @@
 			<key>cell</key>
 			<string>PSGroupCell</string>
 			<key>label</key>
-			<string>全局开关</string>
+			<string>BSGLOBAL</string>
 		</dict>
 	<!--开启全局透明-->
 	<!-- <dict>
@@ -33,7 +33,6 @@
 		<key>PostNotification</key>
 		<string>com.nactro.blurskillersettings/changed</string>
 	</dict> -->
-
 	<!--开启全局微透-->
 	<dict>
 		<key>cell</key>
@@ -45,7 +44,7 @@
 		<key>key</key>
 		<string>globalSelfTrans</string>
 		<key>label</key>
-		<string>开启全局微透</string>
+		<string>BSOVERALL</string>
 		<key>PostNotification</key>
 		<string>com.nactro.blurskillersettings/changed</string>
 	</dict>
@@ -54,7 +53,7 @@
 		<key>cell</key>
 		<string>PSGroupCell</string>
 		<key>label</key>
-		<string>自定义功能</string>
+		<string>BSSWITCH</string>
 	</dict>
 
 	<!--开启设置透明-->
@@ -68,7 +67,7 @@
 	<key>key</key>
 	<string>KBSettings</string>
 	<key>label</key>
-	<string>开启设置透明</string>
+	<string>BSST</string>
 	<key>PostNotification</key>
 	<string>com.nactro.blurskillersettings/changed</string>
 	</dict>
@@ -84,7 +83,7 @@
 <key>key</key>
 <string>folderTrans</string>
 <key>label</key>
-<string>开启文件夹透明</string>
+<string>BSFT</string>
 <key>PostNotification</key>
 <string>com.nactro.blurskillersettings/changed</string>
 </dict>
@@ -99,7 +98,7 @@
 <key>key</key>
 <string>KBDarkText</string>
 <key>label</key>
-<string>开启黑色文字模式（用于白色壁纸）</string>
+<string>BSBAM</string>
 <key>PostNotification</key>
 <string>com.nactro.blurskillersettings/changed</string>
 </dict>
@@ -125,7 +124,7 @@
 	<key>cell</key>
 	<string>PSEditTextCell</string>
 	<key>placeholder</key>
-	<string>有效数值：0.0~1.0</string>
+	<string>0.0~1.0</string>
 	<key>bestGuess</key>
 	<string>0.2</string>
 	<key>defaults</key>
@@ -135,14 +134,14 @@
 	<key>key</key>
 	<string>maskAlpha</string>
 	<key>label</key>
-	<string>输入自定义透明度值：</string>
+	<string>BSTIDTV</string>
 </dict>
 
 <dict>
 <key>cell</key>
 <string>PSButtonCell</string>
 <key>label</key>
-<string>保存透明度值</string>
+<string>BSSTV</string>
 <key>action</key>
 <string>save</string>
 </dict>
@@ -151,15 +150,15 @@
 	<key>cell</key>
 	<string>PSGroupCell</string>
 	<key>label</key>
-	<string>功能按钮</string>
+	<string>BSFUN</string>
 	<key>footerText</key>
-	<string>请在更换壁纸后，点击“创建新的底层蒙版”，进行变更。</string>
+	<string>BSAUANW</string>
 </dict>
 <dict>
 <key>action</key>
 <string>killSpringBoard</string>
 <key>label</key>
-<string>注销设备</string>
+<string>BSRP</string>
 <key>cell</key>
 <string>PSButtonCell</string>
 </dict>
@@ -168,7 +167,7 @@
 <key>action</key>
 <string>getNewWallpaper</string>
 <key>label</key>
-<string>创建新的底层蒙版</string>
+<string>BSCANBM</string>
 <key>cell</key>
 <string>PSButtonCell</string>
 </dict>
@@ -177,22 +176,20 @@
 <key>cell</key>
 <string>PSGroupCell</string>
 <key>label</key>
-<string>支持我们</string>
-<key>footerText</key>
-<string>如果可以，请赞助或关注下面官方微博～</string>
+<string>BSSU</string>
 </dict>
 <dict>
 <key>action</key>
 <string>openDonate</string>
 <key>label</key>
-<string>赞助我们团队</string>
+<string>BSDONATE</string>
 <key>cell</key>
 <string>PSButtonCell</string>
 </dict>
 
 <dict>
 <key>label</key>
-<string>团队展示</string>
+<string>BSSHOW</string>
 <key>footerText</key>
 <string>© Nectra Development 2019</string>
 <key>cell</key>
@@ -223,6 +220,12 @@
 	<dict>
 		<key>service</key>
 		<string>github</string>
+		<key>username</key>
+		<string>nactro</string>
+	</dict>
+	<dict>
+		<key>service</key>
+		<string>twitter</string>
 		<key>username</key>
 		<string>nactro</string>
 	</dict>

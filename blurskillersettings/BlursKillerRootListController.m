@@ -16,7 +16,7 @@ static BOOL KBSettings = NO;
 static NSString *kPrefsPath = @"/var/mobile/Library/Preferences/com.nactro.blurskillersettings.plist";
 #define kWidth  [UIScreen mainScreen].bounds.size.width
 #define HEADER_HEIGHT 120.0f
-static NSString *tweakName = @"透明板 v1.1.3";
+static NSString *tweakName = @"透明板 BlursKiller v1.1.4";
 
 @interface BlursKillerRootListController()
 @property (nonatomic, strong)NactroHeaderView *headerView;
@@ -27,9 +27,9 @@ static NSString *tweakName = @"透明板 v1.1.3";
 	if (!_specifiers) {
 		_specifiers = [self loadSpecifiersFromPlistName:@"Root" target:self];
 	}
-
 	return _specifiers;
 }
+
 - (CGFloat)tableView:(id)tableView heightForHeaderInSection:(NSInteger)section {
 	if (section == 0) {
 		return HEADER_HEIGHT;

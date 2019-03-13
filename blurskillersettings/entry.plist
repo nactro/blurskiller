@@ -11,11 +11,11 @@
 		<key>detail</key>
 		<string>BlursKillerRootListController</string>
 		<key>icon</key>
-		<string>icon.png</string>
+		<string>blurskiller.png</string>
 		<key>isController</key>
 		<true/>
 		<key>label</key>
-		<string>透明板</string>
+		<string>BlursKiller 透明板</string>
 	</dict>
 </dict>
 </plist>

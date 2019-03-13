@@ -1,0 +1,19 @@
+{
+  "BSNAME"="BlursKiller";
+  "BSGLOBAL" = "Overall Switch";
+  "BSOVERALL" = "Turn on Overall Transparent";
+  "BSSWITCH"="DIY Switch";
+  "BSST"="Setting Transparent";
+  "BSFT"="Folder Transparent";
+  "BSBAM"="Black Mode (For White WallPaper) ";
+  "BSTIDTV"="Type in DIY Transparent Value";
+  "BSSTV"="Save Transparent Value";
+  "BSFUN"="Function Section";
+  "BSRP"="ReSpring";
+  "BSCANBM"="Create a New Bottom Mask";
+  "BSDONATE"="Donate us";
+  "BSSHOW"="About us";
+  "BSAUANW"="After using a new WallPaper, type “Creat a New Bottom Mask” for changing.";
+  "BSSU"="Support Us";
+  "BSSOT"="Support our Team";
+}

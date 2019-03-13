@@ -1,6 +1,8 @@
 GO_EASY_ON_ME = 1
 ARCHS = arm64
 include $(THEOS)/makefiles/common.mk
+SDKVERSION = 11.2
+SYSROOT = $(THEOS)/sdks/iPhoneOS11.2.sdk
 BlursKillerSettings_CFLAGS += -fobjc-arc
 BUNDLE_NAME = BlursKillerSettings
 BlursKillerSettings_FILES = BlursKillerRootListController.m NactroCreditOption.m NactroCreditService.m NactroCreditCell.m UIColor+Hex.m UIFont+Extension.m  NactroHeaderView.m

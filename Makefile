@@ -1,7 +1,9 @@
 GO_EASY_ON_ME = 1
+DEBUG = 0
 ARCHS = arm64
 include $(THEOS)/makefiles/common.mk
-export SDKVERSION= 12.1.2
+SDKVERSION = 11.2
+SYSROOT = $(THEOS)/sdks/iPhoneOS11.2.sdk
 
 TWEAK_NAME = blurskiller
 blurskiller_FILES = blurskiller.xm
